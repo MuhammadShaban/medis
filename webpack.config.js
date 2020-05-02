@@ -5,6 +5,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CheckerPlugin} = require('awesome-typescript-loader')
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack')
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
@@ -79,10 +80,9 @@ const renderPlugins = [
   new MiniCssExtractPlugin({filename: '[name].css'}),
   new CheckerPlugin(),
   new webpack.ProvidePlugin({React: 'react'}),
+  new CopyPlugin([{ from: 'resources/icns/Icon1024.png', to: '../icon.png' }])
 ]
-if (mode === 'production') {
-  renderPlugins.push(new BundleAnalyzerPlugin())
-}
+// if (mode === 'production') renderPlugins.push(new BundleAnalyzerPlugin())
 const renderer = Object.assign({}, base, {
   target: 'electron-renderer',
   output: Object.assign({}, base.output, {

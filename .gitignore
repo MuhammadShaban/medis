@@ -1,6 +1,7 @@
 node_modules
 .DS_Store
 dist
+release
 npm-debug.log
 *.provisionprofile
 .awcache

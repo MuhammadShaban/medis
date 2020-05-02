@@ -1,0 +1,42 @@
+// https://www.electron.build/configuration/linux
+{
+  "productName": "Medis",
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!LICENSE",
+    "!README.md",
+    "!CHANGELOG.md",
+    "!package.json",
+    "!package-lock.json",
+    "!src/",
+    "!resources",
+    "!bin",
+    "!tsconfig.json",
+    "!electron-builder.json",
+    "!node_modules"
+  ],
+  "win": {
+    "icon": "dist",
+    "target": [
+      "portable",
+      {
+        "target": "nsis",
+        "arch": ["x64", "ia32"]
+      }
+    ]
+  },
+  "mac": {
+    "icon": "dist",
+    "target": ["dmg", "pkg"]
+  },
+  "linux": {
+    "category": "Development",
+    "description": "Redis management application",
+    "icon": "dist",
+    "target": ["rpm", "deb", "AppImage", "snap"]
+  }
+}
